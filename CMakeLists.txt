@@ -9,6 +9,8 @@ project(assignment1_rt)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   rospy
+  geometry_msgs
+  turtlesim
 )
 
 ## System dependencies are found with CMake's conventions
