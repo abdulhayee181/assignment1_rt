@@ -9,7 +9,7 @@ from geometry_msgs.msg import Twist
 # Global variables to store turtles' positions
 turtle1_pos = None
 turtle2_pos = None
-distance_threshold = 2.0  # Stop turtles if distance is less than this or threshhold
+distance_threshold = 5.0  # Stop turtles if distance is less than this or threshhold
 
 # Callback function to store the positions of turtle1 and turtle2
 def pose_callback_turtle1(msg):
