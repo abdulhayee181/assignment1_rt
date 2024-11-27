@@ -12,6 +12,47 @@ This ROS package contains two nodes that control and monitor turtles in the `tur
   - **Monitors the distance** between `turtle1` and `turtle2`.
   - Stops the turtles if they come **too close** to each other (distance threshold) or to the **boundaries** of the simulation environment.
 
+
+## What I Have Done in This Project
+
+This project involved developing two main nodes that interact with the `turtlesim` environment:
+
+1. **Node 1 - UI Node**:
+   - **Objective**: Allow the user to spawn a second turtle (`turtle2`) and control either `turtle1` or `turtle2` by setting their velocities.
+   - I created a Python script (`ui_node.py`) that:
+     - Spawns a new turtle (`turtle2`) at a specified location.
+     - Accepts user input to select either `turtle1` or `turtle2`.
+     - Accepts user input to set the linear and angular velocities for the selected turtle.
+     - The turtle moves with the specified velocities for 1 second, then stops, and the user can issue new commands.
+
+2. **Node 2 - Distance Node**:
+   - **Objective**: Monitor the distance between the two turtles and stop them if they come too close to each other or to the boundaries of the `turtlesim` world.
+   - I created a Python script (`distance_node.py`) that:
+     - Subscribes to the `/turtle1/pose` and `/turtle2/pose` topics to get the positions of both turtles.
+     - Calculates the Euclidean distance between the two turtles.
+     - Publishes the distance on the `/turtle_distance` topic.
+     - If the distance between the turtles is less than a threshold, the turtles are stopped.
+     - If either turtle moves too close to the boundary (x or y outside [2.0, 8.0]), it is also stopped.
+
+3. **Package Organization**:
+   - I created a new ROS package `assignment1_rt` that contains both nodes.
+   - Both nodes are implemented in Python and make use of the `turtlesim` package to control the turtles and monitor their positions.
+
+4. **Functionality Implementation**:
+   - **UI Node**:
+     - Spawned a turtle at a specified position and orientation.
+     - Took user input for controlling the velocity of the selected turtle.
+     - Moved the selected turtle for 1 second and then stopped it.
+   - **Distance Node**:
+     - Subscribed to the pose information of both turtles.
+     - Calculated and monitored the distance between them.
+     - Stopped the turtles if they became too close to each other or the boundaries.
+
+5. **Testing**:
+   - I tested the nodes by running them in parallel, controlling the turtles via the UI Node and monitoring the distance between them using the Distance Node.
+   - Ensured the system responds correctly when turtles come too close to each other or move out of bounds.
+
+
 ## Prerequisites
 
 Ensure that the following software is installed on your machine:
@@ -34,7 +75,7 @@ Ensure that the following software is installed on your machine:
 
 Clone the repository containing this package into your `catkin_ws/src` directory:
 
-    ```bash
+    ```
 	cd ~/catkin_ws/src
 	git clone <https://github.com/abdulhayee181/assignment1_rt.git>
 	```
