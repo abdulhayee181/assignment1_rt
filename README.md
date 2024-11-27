@@ -2,16 +2,6 @@
 
 This ROS package contains two nodes that control and monitor turtles in the `turtlesim` environment.
 
-## Package Overview
-
-- **Node 1 (UI Node)**: 
-  - **Spawns a new turtle** (`turtle2`).
-  - **Provides a simple interface** for the user to select and control either `turtle1` or `turtle2`, setting their velocities.
-
-- **Node 2 (Distance Node)**: 
-  - **Monitors the distance** between `turtle1` and `turtle2`.
-  - Stops the turtles if they come **too close** to each other (distance threshold) or to the **boundaries** of the simulation environment.
-
 
 ## What I Have Done in This Project
 
@@ -51,6 +41,17 @@ This project involved developing two main nodes that interact with the `turtlesi
 5. **Testing**:
    - I tested the nodes by running them in parallel, controlling the turtles via the UI Node and monitoring the distance between them using the Distance Node.
    - Ensured the system responds correctly when turtles come too close to each other or move out of bounds.
+
+
+## Package Overview
+
+- **Node 1 (UI Node)**: 
+  - **Spawns a new turtle** (`turtle2`).
+  - **Provides a simple interface** for the user to select and control either `turtle1` or `turtle2`, setting their velocities.
+
+- **Node 2 (Distance Node)**: 
+  - **Monitors the distance** between `turtle1` and `turtle2`.
+  - Stops the turtles if they come **too close** to each other (distance threshold) or to the **boundaries** of the simulation environment.
 
 
 ## Prerequisites
