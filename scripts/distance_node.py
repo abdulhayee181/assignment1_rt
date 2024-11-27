@@ -31,6 +31,7 @@ def calculate_distance():
 # Function to monitor the turtles' distance and stop if too close or near boundaries
 def distance_monitor():
     rospy.init_node('distance_node', anonymous=True)
+
     rospy.Subscriber('/turtle1/pose', Pose, pose_callback_turtle1)
     rospy.Subscriber('/turtle2/pose', Pose, pose_callback_turtle2)
 
@@ -49,13 +50,13 @@ def distance_monitor():
                 stop_turtle('turtle2')
 
             # Check if turtles are too close to boundaries (1.0 or 10.0)
-            if (turtle1_pos.x < 1.0 or turtle1_pos.x > 10.0 or 
-                turtle1_pos.y < 1.0 or turtle1_pos.y > 10.0):
+            if (turtle1_pos.x < 3.0 or turtle1_pos.x > 8.0 or 
+                turtle1_pos.y < 3.0 or turtle1_pos.y > 8.0):
                 rospy.loginfo("Turtle1 is too close to boundary! Stopping turtle1.")
                 stop_turtle('turtle1')
 
-            if (turtle2_pos.x < 1.0 or turtle2_pos.x > 10.0 or 
-                turtle2_pos.y < 1.0 or turtle2_pos.y > 10.0):
+            if (turtle2_pos.x < 3.0 or turtle2_pos.x > 8.0 or 
+                turtle2_pos.y < 3.0 or turtle2_pos.y > 8.0):
                 rospy.loginfo("Turtle2 is too close to boundary! Stopping turtle2.")
                 stop_turtle('turtle2')  
 
@@ -70,6 +71,6 @@ def stop_turtle(turtle_name):
 
 if __name__ == '__main__':
     try:
-       pass # distance_monitor()  # Start monitoring the distance
+        distance_monitor()  # Start monitoring the distance
     except rospy.ROSInterruptException:
         pass

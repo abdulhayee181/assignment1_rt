@@ -57,18 +57,15 @@ def move_turtle(turtle_name, linear_velocity, angular_velocity):
 
 def get_user_input():
     while not rospy.is_shutdown():
-        print('select the turtle : 1 or 2 ')
-        turtle_name = input()
+        turtle_name = input('select the turtle : turtle1 or turtle2 : ')
 
         if turtle_name not in ['turtle1', 'turtle2']:
             print('turtle name is incorrect')
             continue
 
-        print(f"Enter the linear velocity for {turtle_name} (in meters per second):")
-        linear_velocity = float(input())
+        linear_velocity =  float(input(f'Enter the linear velocity for {turtle_name}'))
 
-        print(f"enter angular velocity for {turtle_name}")
-        angular_velocity = float(input())
+        angular_velocity = float(input(f"enter angular velocity for {turtle_name}"))
 
         #for moving the selected turtle
         move_turtle(turtle_name , linear_velocity  ,angular_velocity)
